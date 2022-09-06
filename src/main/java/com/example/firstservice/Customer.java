@@ -13,11 +13,19 @@ public class Customer {
         this.sex = false;
         this.age = 0;
     }
-    public Customer(String ID, String n, boolean s, int a){
+    public Customer(String ID, String n, String s, int a){
+        if(s.toLowerCase().equals("male")){
+            this.sex = true;
+        } else if (s.toLowerCase().equals("female")) {
+            this.sex = false;
+        }
         this.ID = ID;
         this.name = n;
-        this.sex = s;
-        this.age = a;
+        if(a < 0){
+            this.age = 0;
+        }
+        else
+            this.age = a;
     }
 
     public String getID() {
@@ -40,23 +48,19 @@ public class Customer {
         return sex;
     }
 
-    public boolean setSex(String sex) {
-        if(sex.toLowerCase() == "Male"){
-            return true;
+    public void setSex(String sex){
+        if(sex.toLowerCase().equals("male")){
+            this.sex = true;
         }
-        else{
-            return false;
+        else if (sex.toLowerCase().equals("female")) {
+            this.sex = false;
         }
     }
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
-        if(age < 0){
-            age = 0;
-        }
         this.age = age;
     }
 }
